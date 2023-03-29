@@ -2,7 +2,6 @@
 require_once('dbc.php');
 $blogs = $_POST;
 
-function blog
 if (empty($blogs['title'])){
     exit('タイトルを入力してください');
 }
