@@ -1,0 +1,14 @@
+div{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+img{
+    width: calc(100% / 3 - 3%);
+}
+div::after{
+    width: calc(100% / 3);
+    content: '';
+    display: block;
+}
