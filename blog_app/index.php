@@ -1,7 +1,7 @@
 <?php
 
 require_once('dbc.php');
-$dbc=new DBC('blog');
+$dbc = new DBC('blog');
 $blogData = $dbc->getBlog();
 
 ?>
@@ -31,10 +31,27 @@ $blogData = $dbc->getBlog();
                 <td><?php echo $column['category'] ?></td>
                 <td><?php echo $column['post_at'] ?></td>
                 <td><a href="/detail.php?id=<?php echo $column['id'] ?>">詳細</td>
-                <td><a href="/update_form.php?id=<?php echo $column['id'] ?>">編集</td>
             </tr>
         <?php endforeach; ?>
     </table>
+    <br>
+    <p>↓公開中↓</p>
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <th>カテゴリ</th>
+            <th>投稿日時</th>
+        </tr>
+        <?php foreach ($blogData as $column) : ?>
+            <tr>
+                <td><?php echo $column['title'] ?></td>
+                <td><?php echo $column['category'] ?></td>
+                <td><?php echo $column['post_at'] ?></td>
+                <td><a href="/detail.php?id=<?php echo $column['id'] ?>">詳細</td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
 </body>
 
 </html>

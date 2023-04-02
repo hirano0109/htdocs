@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 require_once('dbc.php');
 $dbc = new Dbc();
-$id= $_GET['id'];
+$id = $_GET['id'];
 $result = $dbc->getABlog($id);
 
 
@@ -27,12 +27,15 @@ $result = $dbc->getABlog($id);
             <th>日時</th>
             <th>カテゴリ</th>
             <th>本文</th>
+            <th>公開ステータス</th>
         </tr>
-            <tr>
-                <td><?php echo $result['title'] ?></td>
-                <td><?php echo $result['post_at'] ?></td>
-                <td><?php echo $result['category'] ?></td>
-                <td><?php echo $result['content'] ?></td>
-            </tr>
+        <tr>
+            <td><?php echo $result['title'] ?></td>
+            <td><?php echo $result['post_at'] ?></td>
+            <td><?php echo $result['category'] ?></td>
+            <td><?php echo $result['content'] ?></td>
+            <td><?php echo $result['publish_status'] ?></td>
+            <td><a href="/update_form.php?id=<?php echo $column['id'] ?>">編集</td>
+        </tr>
     </table>
 </body>
