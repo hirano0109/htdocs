@@ -35,7 +35,8 @@ $result = $dbc->getABlog($id);
             <td><?php echo $result['category'] ?></td>
             <td><?php echo $result['content'] ?></td>
             <td><?php echo $result['publish_status'] ?></td>
-            <td><a href="/update_form.php?id=<?php echo $column['id'] ?>">編集</td>
+            <td><?php echo $result['post_at'] ?></td>
+            <td><a href="./update_form.php?id=<?php echo $id ?>">編集</td>
         </tr>
     </table>
 </body>

@@ -20,17 +20,20 @@ session_destroy();
         <p>
             <label for="user_name">ユーザ名</label>
             <input type="text" name="username">
-            <?php if (isset($err['email'])) : ?>
-        <p><?php echo $err['email']; ?></p>
+            <?php if (isset($err['user_name'])) : ?>
+        <p><?php echo $err['user_name']; ?></p>
     <?php endif; ?>
     </p>
     <p>
         <label for="password">パスワード</label>
         <input type="text" name="password">
-    </p>
-    <p>
-        <input type="submit" value='ログイン'>
-    </p>
+        <?php if (isset($err['password'])) : ?>
+    <p><?php echo $err['password']; ?></p>
+<?php endif; ?>
+</p>
+<p>
+    <input type="submit" value='ログイン'>
+</p>
     </form>
     <a href="signup_form.php">新規登録はこちら</a>
 </body>

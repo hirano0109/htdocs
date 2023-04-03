@@ -3,6 +3,7 @@
 require_once('dbc.php');
 $dbc = new DBC('blog');
 $blogData = $dbc->getBlog();
+$blogData2 = $dbc->getPublishBlog();
 
 ?>
 
@@ -30,7 +31,7 @@ $blogData = $dbc->getBlog();
                 <td><?php echo $column['title'] ?></td>
                 <td><?php echo $column['category'] ?></td>
                 <td><?php echo $column['post_at'] ?></td>
-                <td><a href="/detail.php?id=<?php echo $column['id'] ?>">詳細</td>
+                <td><a href="./detail.php?id=<?php echo $column['id'] ?>">詳細</td>
             </tr>
         <?php endforeach; ?>
     </table>
@@ -41,13 +42,15 @@ $blogData = $dbc->getBlog();
             <th>タイトル</th>
             <th>カテゴリ</th>
             <th>投稿日時</th>
+            <th>公開設定</th>
         </tr>
-        <?php foreach ($blogData as $column) : ?>
+        <?php foreach ($blogData2 as $column) : ?>
             <tr>
                 <td><?php echo $column['title'] ?></td>
                 <td><?php echo $column['category'] ?></td>
                 <td><?php echo $column['post_at'] ?></td>
-                <td><a href="/detail.php?id=<?php echo $column['id'] ?>">詳細</td>
+                <td><?php echo $column['publish_status'] ?></td>
+                <td><a href="./detail.php?id=<?php echo $column['id'] ?>">詳細</td>
             </tr>
         <?php endforeach; ?>
     </table>

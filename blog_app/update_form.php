@@ -25,6 +25,8 @@ $publish_status = (int)$result['publish_status'];
         <input type="hidden" name="id" value="<?php echo $id?>">
         <p>ブログタイトル：</p>
         <input type="text" name="title" value="<?php echo $title?>">
+        <p>日時</p>
+        <input type="date" name="post_at" value="<?php echo $post_at?>">
         <p>ブログ本文：</p>
         <textarea name="content" id="content" cols="30" rows="10"><?php echo $content?></textarea>
         <br>

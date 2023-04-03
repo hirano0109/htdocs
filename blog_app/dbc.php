@@ -36,7 +36,15 @@ class Dbc
         $result = $stmt->fetchall(PDO::FETCH_ASSOC);
         return $result;
     }
-
+    public function getPublishBlog()
+    {
+        $dbh = $this->dbConnect();
+        $stmt = $dbh->prepare('SELECT * FROM mst_blog WHERE publish_status=:publish_status');
+        $stmt->bindValue(':publish_status', (int)2, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function getABlog($id)
     {
         $id = $_GET['id'];
@@ -84,9 +92,8 @@ class Dbc
         $sql = 'UPDATE 
             mst_blog
             SET
-            (title=:title, content=:content, category, publish_status)
-        VALUES
-            (:title, :content, :category, :publish_status)';
+            title=:title, content=:content, category=:category, publish_status=:publish_status, post_at=:post_at
+        WHERE id=:id';
 
         $dbh = $this->dbConnect();
         $dbh->beginTransaction();
@@ -94,13 +101,14 @@ class Dbc
             $stmt = $dbh->prepare($sql);
             $stmt->bindValue(':title', $blogs['title'], PDO::PARAM_STR);
             $stmt->bindValue(':content', $blogs['content'], PDO::PARAM_STR);
+            $stmt->bindValue(':post_at', $blogs['post_at'], PDO::PARAM_STR);
             $stmt->bindValue(':category', $blogs['category'], PDO::PARAM_INT);
             $stmt->bindValue(':publish_status', $blogs['publish_status'], PDO::PARAM_INT);
             $stmt->bindValue(':id', $blogs['id'], PDO::PARAM_INT);
             
             $stmt->execute();
             $dbh->commit();
-            echo 'ブログを投稿しました';
+            echo 'ブログを更新しました';
         } catch (PDOException $e) {
             $dbh->rollBack();
             exit($e);
