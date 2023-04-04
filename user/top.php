@@ -1,23 +1,21 @@
 <?php
-require_once('./UserLogic.php');
-$err = [];
-
 session_start();
 
-var_dump($_SESSION);
+require_once('./UserLogic.php');
+
+$err = [];
 
 if (!$username = filter_input(INPUT_POST, 'username')) {
     $err['username'] = 'ユーザ名を記入してください';
 }
-$password = filter_input(INPUT_POST, 'password');
-if (!$password) {
+if (!$password = filter_input(INPUT_POST, 'password')) {
     $err['password'] = 'パスワードを記入してください';
 }
 
 if (count($err) > 0) {
     $_SESSION = $err;
-    header('Location: login.php');
-    return;
+    header('Location : http://localhost/user/login.php');
+    exit;
 }
 echo 'ログインしました';
 //temp のなかに php/sec~~　これがセッションファイル
@@ -37,11 +35,11 @@ echo 'ログインしました';
     <?php if (count($err) > 0) : ?>
         <?php foreach ($err as $e) : ?>
             <p><?php echo $e ?></p>
-        <?php endforeach ?>
+        <?php endforeach; ?>
 
     <?php else : ?>
         <p>ユーザ登録が完了しました。</p>
-    <?php endif ?>
+    <?php endif; ?>
     <a href="./login.php">戻る</a>
 </body>
 

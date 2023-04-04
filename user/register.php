@@ -1,27 +1,23 @@
 <?php
+session_start();
+
 require_once('./UserLogic.php');
+
 $err = [];
 
 if (!$username = filter_input(INPUT_POST, 'username')) {
     $err['username'] = 'ユーザ名を記入してください';
 }
-// if (!$email = filter_input(INPUT_POST, 'email')) {
-//     $err[] = 'メールアドレスを記入してください';
-// }
-$password = filter_input(INPUT_POST, 'password');
-if (!preg_match("/\A[a-z\d]{8,100}+\z/i", $password)) {
-    $err['password'] = 'パスワードは英数字8文字以上１００文字以下にしてください';
+if (!$password = filter_input(INPUT_POST, 'password')) {
+    $err['password'] = 'パスワードを記入してください';
 }
-$password_conf = filter_input(INPUT_POST, 'password_conf');
-if (!$password = $password_conf) {
-    $err[] = '確認用パスワードが異なっています。';
+
+if (count($err) > 0) {
+    $_SESSION = $err;
+    header('Location : ./login.php');
+    exit();
 }
-if (count($err) === 0) {
-    $hasCreated = UserLogic::createUser($_POST);
-    if(!$hasCreated){
-        $err[] = '登録に失敗しました';
-    }
-}
+echo 'ログインしました';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,12 +33,12 @@ if (count($err) === 0) {
     <?php if (count($err) > 0) : ?>
         <?php foreach ($err as $e) : ?>
             <p><?php echo $e ?></p>
-        <?php endforeach ?>
+        <?php endforeach; ?>
 
     <?php else : ?>
         <p>ユーザ登録が完了しました。</p>
-    <?php endif ?>
-    <a href="./signup_form.php">戻る</a>
+    <?php endif; ?>
+    <a href="./login.php">ログイン画面</a>
 </body>
 
 </html>

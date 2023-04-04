@@ -1,8 +1,11 @@
 <?php
 session_start();
-$err = $_SESSION;
-$_SESSION = array();
-session_destroy();
+
+var_dump($_SESSION);
+
+// $err = $_SESSION;
+// $_SESSION = array();
+// session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +19,7 @@ session_destroy();
 
 <body>
     <h2>ログインフォーム</h2>
-    <form action="register.php" method="POST">
+    <form action="top.php" method="POST">
         <p>
             <label for="user_name">ユーザ名</label>
             <input type="text" name="username">
