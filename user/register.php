@@ -5,6 +5,13 @@ require_once('./UserLogic.php');
 
 $err = [];
 
+$token = filter_input(INPUT_POST, 'csrf_token');
+
+if(!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
+    exit('不正なリクエストです');
+}
+unset($_SESSION['csrf_token']);
+
 if (!$username = filter_input(INPUT_POST, 'username')) {
     $err['username'] = 'ユーザ名を記入してください';
 }
@@ -14,7 +21,7 @@ if (!$password = filter_input(INPUT_POST, 'password')) {
 
 if (count($err) > 0) {
     $_SESSION = $err;
-    header('Location : ./login.php');
+    header('Location:./login.php');
     exit();
 }
 echo 'ログインしました';

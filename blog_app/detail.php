@@ -17,6 +17,8 @@ $result = $dbc->getABlog($id);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ブログ詳細</title>
+    <link href="form.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -37,6 +39,7 @@ $result = $dbc->getABlog($id);
             <td><?php echo $result['publish_status'] ?></td>
             <td><?php echo $result['post_at'] ?></td>
             <td><a href="./update_form.php?id=<?php echo $id ?>">編集</td>
+            
         </tr>
     </table>
 </body>

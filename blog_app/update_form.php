@@ -18,6 +18,8 @@ $publish_status = (int)$result['publish_status'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BlogForm</title>
+    <link href="form.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
     <h2>ブログ更新フォーム</h2>

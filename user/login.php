@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-var_dump($_SESSION);
-
-// $err = $_SESSION;
-// $_SESSION = array();
-// session_destroy();
+$err = $_SESSION;
+$_SESSION = array();
+session_destroy();
+require_once('functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +22,8 @@ var_dump($_SESSION);
         <p>
             <label for="user_name">ユーザ名</label>
             <input type="text" name="username">
-            <?php if (isset($err['user_name'])) : ?>
-        <p><?php echo $err['user_name']; ?></p>
+            <?php if (isset($err['username'])) : ?>
+        <p><?php echo $err['username']; ?></p>
     <?php endif; ?>
     </p>
     <p>
@@ -34,6 +33,8 @@ var_dump($_SESSION);
     <p><?php echo $err['password']; ?></p>
 <?php endif; ?>
 </p>
+<input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">
+
 <p>
     <input type="submit" value='ログイン'>
 </p>

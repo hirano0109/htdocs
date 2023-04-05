@@ -14,8 +14,8 @@ if (!$password = filter_input(INPUT_POST, 'password')) {
 
 if (count($err) > 0) {
     $_SESSION = $err;
-    header('Location : http://localhost/user/login.php');
-    exit;
+    header('Location:./login.php');
+    exit();
 }
 echo 'ログインしました';
 //temp のなかに php/sec~~　これがセッションファイル
