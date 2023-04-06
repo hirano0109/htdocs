@@ -1,6 +1,6 @@
 <?php
-
 require_once('dbc.php');
+$dbc = new DBC;
 $blogData = $dbc->getBlog();
 $blogData2 = $dbc->getPublishBlog();
 

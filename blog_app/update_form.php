@@ -22,6 +22,7 @@ $publish_status = (int)$result['publish_status'];
 
 </head>
 <body>
+    <div class="wrapper">
     <h2>ブログ更新フォーム</h2>
     <form action="blog_update.php" method="POST">
         <input type="hidden" name="id" value="<?php echo $id?>">
@@ -43,6 +44,6 @@ $publish_status = (int)$result['publish_status'];
         <br>
         <input type="submit" value="送信">
     </form>
-    
+    </div>
 </body>
 </html>
