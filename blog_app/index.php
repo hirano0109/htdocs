@@ -1,13 +1,14 @@
 <?php
 
 require_once('dbc.php');
+$dbc = new Dbc();
 $blogData = $dbc->getBlog();
 $blogData2 = $dbc->getPublishBlog();
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -22,11 +23,13 @@ $blogData2 = $dbc->getPublishBlog();
 <body>
     <h2>ブログ一覧</h2>
     <p><a href="./form.html">新規作成</a></p>
+    <div class="wrapper">
     <table>
         <tr>
             <th>タイトル</th>
             <th>カテゴリ</th>
             <th>投稿日時</th>
+            <th></th>
         </tr>
         <?php foreach ($blogData as $column) : ?>
             <tr>
@@ -56,7 +59,7 @@ $blogData2 = $dbc->getPublishBlog();
             </tr>
         <?php endforeach; ?>
     </table>
-
+    </div>
 </body>
 
 </html>
