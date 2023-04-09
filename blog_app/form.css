@@ -1,10 +1,10 @@
 .wrapper {
-    width: 80%;
-    margin: 0 auto;
+    width: 90%;
+    margin: 2rem auto 0;
 }
 
 table{
-    width: 80%;
+    width: 100%;
     margin: 10px auto;
     border-collapse: collapse;
     /* border-spacing: 0; */
@@ -20,19 +20,16 @@ table{
     white-space: nowrap;
 }
 
-input,
 textarea {
     width: 80%;
+    height: 200px;
     border: 1px solid #000;
     border-radius: 5px;
 }
 
-input {
+#title {
+    width: 80%;
     height: 25px;
-}
-
-textarea {
-    height: 200px;
 }
 
 button {
@@ -43,5 +40,7 @@ label {
     display: block;
     /* これなしだとwidthが効かない */
     padding: 0.3em;
-    margin-bottom: 20px;
+}
+.publish_status {
+
 }
