@@ -114,4 +114,19 @@ class Dbc
             exit($e);
         }
     }
+
+    // <!-- フロント側 -->
+    <?php echo $dbc->setCategoryName($colmn['category']) ?>
+   
+    // <!-- 共通処理 -->
+       public function setCategoryName($category)
+       {
+           if ($category === '1') {
+               return '日常';
+           } elseif ($category === '2') {
+               return 'プログラミング';
+           } else {
+               return 'その他';
+           }
+       }
 }
